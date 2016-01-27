@@ -26,7 +26,7 @@ float maxThreshold;
 boolean bDebug = false;
 
 void setup() {
-  size(1024, 768, P3D);    
+  size(800, 600, P3D);    
 
   // setup controls
   cp5 = new ControlP5(this);
@@ -50,7 +50,7 @@ void setup() {
   // setup the shader
   pg = createGraphics(width, height, P2D);
   pg.noSmooth();
-  conway = loadShader("conway.glsl");
+  conway = loadShader("conway_gradient_02.glsl");
   conway.set("resolution", float(pg.width), float(pg.height));  
   conway.set("kinectResolution", float(kinect.width), float(kinect.height));
 }
@@ -78,6 +78,8 @@ void draw() {
   // draw depth image
   if(bDebug) {
     image(depthImg, 0, 0, 256, 192);
+    String txt = "framerate:" + frameRate;
+    text(txt, 10, 10); 
   }
 }
 
